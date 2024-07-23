@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Paths and Competitions</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+      }
+      h1,
+      h2 {
+        color: #333;
+      }
+      .team-paths,
+      .competitions {
+        margin-bottom: 30px;
+      }
+      .team-path,
+      .competition {
+        margin-bottom: 10px;
+      }
+      .back-link {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 15px;
+        background-color: #4caf50;
+        color: white;
+        text-decoration: none;
+      }
+      .back-link:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Team Paths and Competitions</h1>
+    <p>
+      Generated paths for {{ num_teams }} teams across {{ num_locations }}
+      locations.
+    </p>
+
+    <div class="team-paths">
+      <h2>Team Paths:</h2>
+      {% for team, path in team_paths.items() %}
+      <div class="team-path">Team {{ team }}: {{ path|join(', ') }}</div>
+      {% endfor %}
+    </div>
+
+    <div class="competitions">
+      <h2>Competitions:</h2>
+      {% for location, teams in competitions.items() %}
+      <div class="competition">
+        {{ location }}: Teams {{ teams|join(', ') }}
+      </div>
+      {% endfor %}
+    </div>
+
+    <a href="/" class="back-link">Generate New Paths</a>
+  </body>
+</html>
